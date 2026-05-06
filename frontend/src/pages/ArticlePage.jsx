@@ -56,9 +56,9 @@ export default function ArticlePage() {
         </div>
         <div className="mt-8 overflow-hidden rounded"><ArticleImage article={article} large /></div>
         <section className="prose-news mt-8">
-          {article.summary && <p className="lead">{article.summary}</p>}
-          {article.ai_summary && <p>{article.ai_summary}</p>}
-          {article.content_excerpt && <p>{article.content_excerpt}</p>}
+          {article.summary && <p className="lead">{renderTextWithHashtags(article.summary)}</p>}
+          {article.ai_summary && <p>{renderTextWithHashtags(article.ai_summary)}</p>}
+          {article.content_excerpt && <p>{renderTextWithHashtags(article.content_excerpt)}</p>}
           {!article.summary && !article.ai_summary && !article.content_excerpt && (
             <p className="lead">This source did not provide a public summary in its feed. Use the original source button below to read the full official update.</p>
           )}
@@ -78,4 +78,21 @@ export default function ArticlePage() {
       )}
     </main>
   );
+}
+
+function renderTextWithHashtags(text) {
+  if (!text) return null;
+
+  return text.split(/(#[\p{L}\p{N}_]+)/u).map((part, index) => {
+    if (/^#[\p{L}\p{N}_]+$/u.test(part)) {
+      const tag = part.slice(1);
+      return (
+        <Link key={`${tag}-${index}`} to={`/search?q=${encodeURIComponent(tag)}`} className="font-semibold text-blue-700 hover:text-blue-900">
+          {part}
+        </Link>
+      );
+    }
+
+    return <span key={`text-${index}`}>{part}</span>;
+  });
 }

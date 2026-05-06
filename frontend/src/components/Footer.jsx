@@ -5,9 +5,8 @@ export default function Footer() {
     <footer className="mt-16 border-t border-slate-200 bg-white text-slate-700">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="" className="h-9 w-9 rounded bg-white object-contain ring-1 ring-slate-200" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
-            <strong className="text-slate-950">World Tech Khabar</strong>
+          <div className="flex items-center">
+            <img src="/logo.png" alt="World Tech Khabar logo" className="h-11 w-auto max-w-[220px] object-contain" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
           </div>
           <p className="mt-4 text-sm text-slate-600">Verified AI and technology updates from official sources.</p>
         </div>

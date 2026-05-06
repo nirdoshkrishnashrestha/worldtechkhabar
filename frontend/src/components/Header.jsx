@@ -25,10 +25,10 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/92 text-slate-950 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3">
-        <Link to="/" className="flex min-w-0 items-center gap-3 pr-2">
-          <img src="/logo.png" alt="World Tech Khabar logo" className="h-10 w-10 rounded bg-white object-contain ring-1 ring-slate-200" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
-          <span className="text-xl font-black tracking-normal text-slate-950">World Tech Khabar</span>
+      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-2.5">
+        <Link to="/" className="flex min-w-0 items-center pr-2">
+          <img src="/logo.png" alt="World Tech Khabar logo" className="h-10 w-auto max-w-[280px] object-contain md:h-14 md:max-w-[420px]" onError={(event) => { event.currentTarget.style.display = 'none'; }} />
+          <span className="sr-only">World Tech Khabar</span>
         </Link>
         <nav className="ml-auto hidden items-center gap-1 lg:flex">
           {nav.map(([label, path]) => <NavLink key={path} to={path} className={({ isActive }) => `border-b-2 px-2.5 py-2 text-sm font-bold transition ${isActive ? 'border-blue-700 text-blue-700' : 'border-transparent text-slate-600 hover:border-slate-300 hover:text-slate-950'}`}>{label}</NavLink>)}
